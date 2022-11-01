@@ -1,12 +1,12 @@
 #include "MyAllocator.h"
-#include "FixedPoolStrategy.h"
 #include "DynamicPoolStrategy.h"
+#include "FixedPoolStrategy.h"
 #include "Foo.h"
 #include <map>
 #include <functional>
 #include <gtest/gtest.h>
 
-TEST(MyAllocatorTest, mapWithIntegralAndFixedPoolStrategy) {
+TEST(MyAllocatorTest, mapPrimitiveTypeAndFixedPoolStrategy) {
     //given
     const std::size_t numberOfElements = 10;
 
@@ -25,7 +25,7 @@ TEST(MyAllocatorTest, mapWithIntegralAndFixedPoolStrategy) {
     }
 }
 
-TEST(MyAllocatorTest, mapWithIntegralAndDynamicPoolStrategy) {
+TEST(MyAllocatorTest, mapPrimitiveTypeAndDynamicPoolStrategy) {
     //given
     const std::size_t initialPoolSize = 10;
     const std::size_t numberOfElements = initialPoolSize * 5; //a total number of elements is bigger than the initial pool size => the pool will grow
@@ -45,7 +45,7 @@ TEST(MyAllocatorTest, mapWithIntegralAndDynamicPoolStrategy) {
     }
 }
 
-TEST(MyAllocatorTest, mapWithObjectAndDynamicPoolStrategy) {
+TEST(MyAllocatorTest, mapObjectTypeAndDynamicPoolStrategy) {
     //given
     const std::size_t initialPoolSize = 10;
     const std::size_t numberOfElements = initialPoolSize * 5; //a total number of elements is bigger than the initial pool size => the pool will grow

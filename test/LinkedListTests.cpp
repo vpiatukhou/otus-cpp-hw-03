@@ -1,22 +1,15 @@
 #include "LinkedList.h"
+#include "Foo.h"
 #include <gtest/gtest.h>
-
-namespace HomeworkTest {
-    struct Foo {
-        int value;
-
-        Foo(int _value) : value(_value) { };
-    };
-};
 
 TEST(MyLinkedListTest, addPrimitiveType) {
     //given
-    int listSize = 3;
+    int numberOfElements = 3;
 
     Homework::LinkedList<int> list;
     
     //when
-    for (int i = 0; i < listSize; ++i) {
+    for (int i = 0; i < numberOfElements; ++i) {
         list.add(i);
     }
 
@@ -26,17 +19,17 @@ TEST(MyLinkedListTest, addPrimitiveType) {
         ASSERT_EQ(i, element);
         ++i;
     }
-    ASSERT_EQ(i, listSize);
+    ASSERT_EQ(i, numberOfElements);
 }
 
 TEST(MyLinkedListTest, addObjectType) {
     //given
-    int listSize = 3;
+    int numberOfElements = 3;
 
     Homework::LinkedList<HomeworkTest::Foo> list;
     
     //when
-    for (int i = 0; i < listSize; ++i) {
+    for (int i = 0; i < numberOfElements; ++i) {
         list.add(HomeworkTest::Foo(i));
     }
 
@@ -46,5 +39,5 @@ TEST(MyLinkedListTest, addObjectType) {
         ASSERT_EQ(i, element.value);
         ++i;
     }
-    ASSERT_EQ(i, listSize);
+    ASSERT_EQ(i, numberOfElements);
 }
