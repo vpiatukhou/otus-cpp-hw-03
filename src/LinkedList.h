@@ -17,7 +17,7 @@ private:
 		T* value;
 	};
 
-	using NodeAllocator = typename Allocator::template rebind<Node>::other;
+	using NodeAllocator = typename std::allocator_traits<Allocator>::template rebind_alloc<Node>;
 
     Node* head = nullptr;
 	Node* tail = nullptr;
@@ -79,24 +79,24 @@ public:
 			current = current->next;
 
             //destroy the stored value
-			allocator.destroy(toDelete->value);
-			allocator.deallocate(toDelete->value, 1);
+			std::allocator_traits<Allocator>::destroy(allocator, toDelete->value);
+			std::allocator_traits<Allocator>::deallocate(allocator, toDelete->value, 1);
 
             //destroy the node
-			nodeAllocator.destroy(toDelete);
-			nodeAllocator.deallocate(toDelete, 1);
+			std::allocator_traits<NodeAllocator>::destroy(nodeAllocator, toDelete);
+			std::allocator_traits<NodeAllocator>::deallocate(nodeAllocator, toDelete, 1);
 		}
 	}
 
 	void add(const T& value) {
         //allocate memory for a copy of the given value
-		T* newValuePtr = allocator.allocate(1);
+		T* newValuePtr = std::allocator_traits<Allocator>::allocate(allocator, 1);
         //construct a copy of the value
-		allocator.construct(newValuePtr, value);
+		std::allocator_traits<Allocator>::construct(allocator, newValuePtr, value);
 
         //create a node to store the value
-		Node* node = nodeAllocator.allocate(1);
-		nodeAllocator.construct(node);
+		Node* node = std::allocator_traits<NodeAllocator>::allocate(nodeAllocator, 1);
+		std::allocator_traits<NodeAllocator>::construct(nodeAllocator, node);
 
 		node->value = newValuePtr;
         

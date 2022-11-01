@@ -60,16 +60,6 @@ namespace Homework {
 			}
 		}
 
-		template<typename U, typename... Args>
-		void construct(U* p, Args &&...args) {
-			new (p) U(std::forward<Args>(args)...);
-		}
-
-		template<typename U>
-		void destroy(U* p) {
-			p->~U();
-		}
-
 		friend bool operator==(const MyAllocator<T, numberOfElements, MemoryPoolStrategy>& a, const MyAllocator<T, numberOfElements, MemoryPoolStrategy>& b) {
 			//two allocators equals only if they points to the same pool
 			return a.memoryPool == b.memoryPool;
