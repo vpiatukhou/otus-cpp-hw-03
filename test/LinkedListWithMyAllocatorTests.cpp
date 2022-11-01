@@ -1,15 +1,8 @@
 #include "LinkedList.h"
 #include "MyAllocator.h"
 #include "FixedPoolStrategy.h"
+#include "Foo.h"
 #include <gtest/gtest.h>
-
-namespace HomeworkTest {
-    struct Foo {
-        int value;
-
-        Foo(int _value) : value(_value) { };
-    };
-};
 
 TEST(IntegrationTests, linkedListWithFixedPoolAllocator) {
     //given
@@ -18,7 +11,7 @@ TEST(IntegrationTests, linkedListWithFixedPoolAllocator) {
     Homework::LinkedList<HomeworkTest::Foo, Homework::MyAllocator<HomeworkTest::Foo, poolSize, Homework::FixedPoolStrategy>> list;
     
     //when
-    for (std::size_t i = 0; i < poolSize; ++i) {
+    for (int i = 0; i < poolSize; ++i) {
         list.add(HomeworkTest::Foo(i));
     }
 

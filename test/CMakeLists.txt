@@ -1,4 +1,4 @@
-add_executable(allocator_tests LinkedListTests.cpp LinkedListWithMyAllocatorTests.cpp)
+add_executable(allocator_tests MyAllocatorTests.cpp LinkedListTests.cpp LinkedListWithMyAllocatorTests.cpp)
 
 set_target_properties(allocator_tests PROPERTIES 
     CMAKE_CXX_STANDARD 14 

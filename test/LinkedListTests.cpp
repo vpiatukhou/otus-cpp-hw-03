@@ -11,12 +11,12 @@ namespace HomeworkTest {
 
 TEST(MyLinkedListTest, addPrimitiveType) {
     //given
-    std::size_t listSize = 3;
+    int listSize = 3;
 
     Homework::LinkedList<int> list;
     
     //when
-    for (std::size_t i = 0; i < listSize; ++i) {
+    for (int i = 0; i < listSize; ++i) {
         list.add(i);
     }
 
@@ -31,12 +31,12 @@ TEST(MyLinkedListTest, addPrimitiveType) {
 
 TEST(MyLinkedListTest, addObjectType) {
     //given
-    std::size_t listSize = 3;
+    int listSize = 3;
 
     Homework::LinkedList<HomeworkTest::Foo> list;
     
     //when
-    for (std::size_t i = 0; i < listSize; ++i) {
+    for (int i = 0; i < listSize; ++i) {
         list.add(HomeworkTest::Foo(i));
     }
 
